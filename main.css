@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap');
+
+body {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 300;
+    background-color: black;
+    color: black;
+    margin-right: 5%;
+    margin-left: 5%;
+    overflow-x: hidden;
+}
+
+header {
+    height: 100px;
+}
+
+.logo {
+    width: 250px;
+    position: relative;
+    top: 15px;
+    left: -45px;
+}
+
+.container {
+    display: grid;
+    grid-gap: 15px;
+    grid-template-columns: 1fr;
+/*
+    grid-template-areas: 
+        "date"
+        "day"
+        "time"
+        "timeOfDay"
+        "image";
+*/
+}
+
+@media only screen and (min-width: 600px) and (max-width: 999px) {
+ 
+}
+
+@media only screen and (min-width: 1000px) and (max-width: 1350px){
+
+}
+
+@media only screen and (min-width: 1351px){
+
+}
