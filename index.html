@@ -3,9 +3,15 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>SpaceX Clock</title>
-        <link href="main.css" type="text/css" rel="stylesheet" />
+        <title>SpaceX API</title>
+        
+        <!--Links voor de Mapbox API-->
+        <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+        <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
+        
+        <!--Links voor eigen style en js-->
         <script src="script.js" defer></script>
+        <link href="main.css" type="text/css" rel="stylesheet" />
     </head>
     <body>
         <header>
@@ -15,7 +21,12 @@
         </header>
         <main>
             <div class="container">
-                
+                <div id="map" class="bg">
+<!--                    <h1>test 1</h1>-->
+                </div>  
+                <div id="weather" class="bg">
+                    <h1>test 2</h1>
+                </div> 
             </div>
         </main>
     </body>

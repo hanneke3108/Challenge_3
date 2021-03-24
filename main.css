@@ -25,16 +25,26 @@ header {
     display: grid;
     grid-gap: 15px;
     grid-template-columns: 1fr;
-/*
     grid-template-areas: 
-        "date"
-        "day"
-        "time"
-        "timeOfDay"
-        "image";
-*/
+        "map"
+        "weather";
 }
 
+.bg {
+    background-color: yellow;
+}
+
+#map {
+    grid-area: map;
+    width: 90vw;
+    height: 45vh;
+}
+
+#weather {
+    grid-area: weather;
+}
+
+/*
 @media only screen and (min-width: 600px) and (max-width: 999px) {
  
 }
@@ -45,4 +55,4 @@ header {
 
 @media only screen and (min-width: 1351px){
 
-}
+}*/
