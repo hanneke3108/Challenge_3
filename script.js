@@ -1,3 +1,39 @@
+function getWeatherdata() {
+
+	var city = 'the%20Hague,nl';
+    var openWeatherMaps = 'https://api.openweathermap.org/data/2.5/weather?appid=4b744423cf0a52b6dd15ef35e7a2cad9&q=' + city;
+	
+	fetch(openWeatherMaps)
+	
+	//Parse to JSON format
+	.then(function(response) {
+		return response.json();
+	})
+	
+	// render weather per day
+	.then(function(response) {
+		// render weatherCondition
+		onAPISucces(response);	
+	});
+}
+
+
+function onAPISucces(response) {
+	// get type of weather in string format
+	var type = response.weather[0].description;
+
+	// get temperature in Celcius
+	var degC = Math.floor(response.main.temp - 273.15);
+
+	// render weather in DOM
+	var weatherDiv = document.getElementById('weather');
+	weatherDiv.innerHTML = degC + '&#176;C <br />' + type;
+}
+
+getWeatherdata();
+
+
+
 //API MAPBOX
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwbHc1MmdwbHdoNSJ9.AijgnojlL0zQrsuxoIpURw';
 
