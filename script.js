@@ -1,4 +1,4 @@
-function getWeatherdata() {
+function getWeatherAPI() {
 
 	var city = 'the%20Hague,nl';
     var openWeatherMaps = 'https://api.openweathermap.org/data/2.5/weather?appid=4b744423cf0a52b6dd15ef35e7a2cad9&q=' + city;
@@ -10,27 +10,26 @@ function getWeatherdata() {
 		return response.json();
 	})
 	
-	// render weather per day
+	//Render weather
 	.then(function(response) {
-		// render weatherCondition
-		onAPISucces(response);	
+		getWeatherData(response);	
 	});
 }
 
 
-function onAPISucces(response) {
+function getWeatherData(response) {
 	// get type of weather in string format
-	var type = response.weather[0].description;
+	var sunOrClouds = response.weather[0].description;
 
 	// get temperature in Celcius
-	var degC = Math.floor(response.main.temp - 273.15);
+	var degreesInC = Math.floor(response.main.temp - 273.15);
 
 	// render weather in DOM
 	var weatherDiv = document.getElementById('weather');
-	weatherDiv.innerHTML = degC + '&#176;C <br />' + type;
+	weatherDiv.innerHTML = degreesInC + '&#176;C <br />' + sunOrClouds;
 }
 
-getWeatherdata();
+getWeatherAPI();
 
 
 
@@ -41,7 +40,7 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/satellite-v9',
     container: 'map',
     center: [4.322840, 52.067101],
-//    bearing: -17.6,
+//    bearing: -45,
     pitch: 0,
     zoom: 15,
 });
