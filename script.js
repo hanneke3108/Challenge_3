@@ -27,9 +27,24 @@ function getWeatherData(response) {
     var temperature = response.current.temperature;
     var humidity = response.current.humidity;
     var pressure = response.current.pressure;
+    var icon = "";
     
+    if (sunOrClouds == 'Sunny' || sunOrClouds == 'Clear') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>";
+    } else if (sunOrClouds == 'Partly cloudy') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>";
+    } else if (sunOrClouds == 'Overcast') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>";
+    } else if (sunOrClouds == 'Light Rain') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>";
+    } else if (sunOrClouds == 'Heavy rain at times' || sunOrClouds == 'Heavy rain') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>"
+    } else if (sunOrClouds == 'Thundery outbreaks possible') {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>"
+    }
+               
     var weatherDiv = document.getElementById('weather');
-    weatherDiv.innerHTML = 'Huidige temperatuur: ' + temperature + '&#176;C <br />' + 'Voelt aan als: ' + feelsLike + '&#176;C <br />' + 'Vochtigheid: ' + humidity + '% <br />' + 'Luchtdruk: ' + pressure + ' hPa <br />' + 'Vandaag: ' + sunOrClouds + "<img src='https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png'>";  
+    weatherDiv.innerHTML = 'Huidige temperatuur: ' + temperature + '&#176;C <br />' + 'Voelt aan als: ' + feelsLike + '&#176;C <br />' + 'Vochtigheid: ' + humidity + '% <br />' + 'Luchtdruk: ' + pressure + ' hPa <br />' + 'Vandaag: ' + sunOrClouds + icon;  
 }
 
 document.getElementById('button').onclick = function(){
