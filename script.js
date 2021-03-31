@@ -1,8 +1,8 @@
 //API WEATHERSTACK
-function getWeatherAPI() {
+function getWeatherAPI(city, getWeatherData) {
     
     var city = 'Rotterdam';
-    var weatherStack = 'http://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&q=' + city;
+    var weatherStack = 'http://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&query=' + city;
 
     fetch(weatherStack)
 
@@ -14,12 +14,12 @@ function getWeatherAPI() {
     //Render weather
     .then(function(response) {
         getWeatherData(response);	
-    })
+    });
 	
-	//Render location
-	.then(function(response) {
-		getMapLocation(response);	
-	});
+//	//Render location
+//	.then(function(response) {
+//		getMapLocation(response);	
+//	});
 
 }
 
@@ -41,10 +41,12 @@ document.getElementById('button').onclick = function(){
 
 function getCity() {
     var city = document.getElementById("myText").value;
-    getWeatherAPI(city);
+    getWeatherAPI(city, getWeatherData);
+    getWeatherAPI(city, getMapLocation);
 }
 
-getWeatherAPI();
+//getWeatherAPI(city, getWeatherData);
+//getWeatherAPI(city, getMapLocation);
 
 
 
@@ -88,9 +90,9 @@ getWeatherAPI();
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwbHc1MmdwbHdoNSJ9.AijgnojlL0zQrsuxoIpURw';
 
 function getMapLocation(response) {
-    var weatherLoc = response.coord;
+    var weatherLoc = response.location;
     var weatherLocCity = document.getElementbyId('coord');
-    weatherLocCity.innerHTML = response.name;
+    weatherLocCity.innerHTML = weatherLoc.name;
     
     var map = new mapboxgl.Map({
         style: 'mapbox://styles/mapbox/satellite-v9',
@@ -103,7 +105,7 @@ function getMapLocation(response) {
     })
 };
 
-map.addControl(new mapboxgl.NavigationControl()); 
+//map.addControl(new mapboxgl.NavigationControl()); 
 
 
 
