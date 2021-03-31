@@ -1,59 +1,112 @@
+//API WEATHERSTACK
 function getWeatherAPI() {
+    
+    var city = 'Rotterdam';
+    var weatherStack = 'http://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&q=' + city;
 
-	var city = 'the%20Hague,nl';
-    var openWeatherMaps = 'https://api.openweathermap.org/data/2.5/weather?appid=4b744423cf0a52b6dd15ef35e7a2cad9&q=' + city;
+    fetch(weatherStack)
+
+    //Parse to JSON format
+    .then(function(response) {
+        return response.json();
+    })
+
+    //Render weather
+    .then(function(response) {
+        getWeatherData(response);	
+    })
 	
-	fetch(openWeatherMaps)
-	
-	//Parse to JSON format
+	//Render location
 	.then(function(response) {
-		return response.json();
-	})
-	
-	//Render weather
-	.then(function(response) {
-		getWeatherData(response);	
+		getMapLocation(response);	
 	});
+
 }
 
 
 function getWeatherData(response) {
-	// get type of weather in string format
-	var sunOrClouds = response.weather[0].description;
+    var sunOrClouds = response.current.weather_descriptions[0];
+    var feelsDegrees = response.current.feelslike;
+    var degrees = response.current.temperature;
+    
+    var weatherDiv = document.getElementById('weather');
+    weatherDiv.innerHTML = 'Huidige temperatuur:' + degrees + '<br />' + 'Voelt aan als:' + feelsDegrees + '<br />' + sunOrClouds;  
+}
 
-	// get temperature in Celcius
-	var degreesInC = Math.floor(response.main.temp - 273.15);
 
-	// render weather in DOM
-	var weatherDiv = document.getElementById('weather');
-	weatherDiv.innerHTML = degreesInC + '&#176;C <br />' + sunOrClouds;
+function getCity() {
+    var y = document.getElementById("myText").value;
+    setWeatherAPI(y);;
 }
 
 getWeatherAPI();
 
 
 
+////API OPENWEATHERMAPS
+//function getWeatherAPI() {
+//
+//	var city = 'the%20Hague,nl';
+//    var openWeatherMaps = 'https://api.openweathermap.org/data/2.5/weather?appid=4b744423cf0a52b6dd15ef35e7a2cad9&q=' + city;
+//	
+//	fetch(openWeatherMaps)
+//	
+//	//Parse to JSON format
+//	.then(function(response) {
+//		return response.json();
+//	})
+//	
+//	//Render weather
+//	.then(function(response) {
+//		getWeatherData(response);	
+//	});
+//}
+
+
+//function getWeatherData(response) {
+//	// get type of weather in string format
+//	var sunOrClouds = response.weather[0].description;
+//
+//	// get temperature in Celcius
+//	var degreesInC = Math.floor(response.main.temp - 273.15);
+//
+//	// render weather in DOM
+//	var weatherDiv = document.getElementById('weather');
+//	weatherDiv.innerHTML = degreesInC + '&#176;C <br />' + sunOrClouds;
+//}
+//
+//getWeatherAPI();
+
+
+
 //API MAPBOX
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwbHc1MmdwbHdoNSJ9.AijgnojlL0zQrsuxoIpURw';
 
-var map = new mapboxgl.Map({
-    style: 'mapbox://styles/mapbox/satellite-v9',
-    container: 'map',
-    center: [4.322840, 52.067101],
-//    bearing: -45,
-    pitch: 0,
-    zoom: 15,
-});
+function getMapLocation(response) {
+    var weatherLoc = response.coord;
+    var weatherLocCity = document.getElementbyId('coord');
+    weatherLocCity.innerHTML = response.name;
+    
+    var map = new mapboxgl.Map({
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        container: 'map',
+        center: [weatherLoc.lon, weatherLoc.lat],
+        //[4.322840, 52.067101]
+        //bearing: -45,
+        pitch: 0,
+        zoom: 15,
+    })
+};
 
 map.addControl(new mapboxgl.NavigationControl()); 
 
 
 
 //var HHSpopup = new mapboxgl.Popup().setHTML('<h3>De Haagse Hogeschool</h3><p>Is momenteel dicht.</p>');
-
+//
 //// Adding a marker based on lon lat coordinates
 //var marker = new mapboxgl.Marker()
-//  .setLngLat([4.324439, 52.067200])
+//  .setLngLat([30.7658, 20.1653])
 //  .setPopup(HHSpopup)
 //  .addTo(map);
 
