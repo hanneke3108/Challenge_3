@@ -94,7 +94,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwb
 
 function getMapLocation(response) {
     var weatherLoc = response.location;
-    var weatherLocCity = document.getElementbyId('coord');
+    var weatherLocCity = document.getElementById('coord');
     weatherLocCity.innerHTML = weatherLoc.name;
     
     var map = new mapboxgl.Map({

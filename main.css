@@ -27,6 +27,7 @@ header {
     grid-template-columns: 1fr;
     grid-template-areas: 
         "input"
+        "coord"
         "map"
         "weather";
 }
@@ -37,6 +38,10 @@ header {
 
 #input {
     grid-area: input;
+}
+
+#coord {
+    grid-area: coord;
 }
 
 #map {
