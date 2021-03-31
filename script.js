@@ -1,7 +1,7 @@
 var city = 'Rotterdam';
 
 //API WEATHERSTACK
-function getWeatherAPI(city, getWeatherData) {
+function getWeatherAPI(city, functie) {
     
     var city = city;
     var functie = functie;
@@ -33,7 +33,7 @@ function getWeatherData(response) {
     var degrees = response.current.temperature;
     
     var weatherDiv = document.getElementById('weather');
-    weatherDiv.innerHTML = 'Huidige temperatuur:' + degrees + '<br />' + 'Voelt aan als:' + feelsDegrees + '<br />' + sunOrClouds;  
+    weatherDiv.innerHTML = 'Huidige temperatuur: ' + degrees + '<br />' + 'Voelt aan als: ' + feelsDegrees + '<br />' + sunOrClouds;  
 }
 
 
@@ -48,8 +48,8 @@ function getCity() {
     getWeatherAPI(y, getMapLocation);
 }
 
-//getWeatherAPI(city, getWeatherData);
-//getWeatherAPI(city, getMapLocation);
+getWeatherAPI(city, getWeatherData);
+getWeatherAPI(city, getMapLocation);
 
 
 
