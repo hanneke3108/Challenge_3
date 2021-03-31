@@ -33,18 +33,26 @@ function getWeatherData(response) {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>";
     } else if (sunOrClouds == 'Partly cloudy') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>";
-    } else if (sunOrClouds == 'Overcast') {
+    } else if (sunOrClouds == 'Overcast' || sunOrClouds == 'Mist') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>";
-    } else if (sunOrClouds == 'Light Rain') {
+    } else if (sunOrClouds == 'Light Rain' || sunOrClouds == 'Light           Drizzle') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>";
     } else if (sunOrClouds == 'Heavy rain at times' || sunOrClouds == 'Heavy rain') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>"
     } else if (sunOrClouds == 'Thundery outbreaks possible') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>"
     }
-               
-    var weatherDiv = document.getElementById('weather');
-    weatherDiv.innerHTML = 'Huidige temperatuur: ' + temperature + '&#176;C <br />' + 'Voelt aan als: ' + feelsLike + '&#176;C <br />' + 'Vochtigheid: ' + humidity + '% <br />' + 'Luchtdruk: ' + pressure + ' hPa <br />' + 'Vandaag: ' + sunOrClouds + icon;  
+    
+    var temperatureDiv = document.getElementById('temperature');
+    temperatureDiv.innerHTML = '<p>Huidige temperatuur: </p>' + temperature + '&#176;C';
+    var feelsLikeDiv = document.getElementById('feelsLike');
+    feelsLikeDiv.innerHTML = '<p>Voelt aan als: </p>' + feelsLike + '&#176;C';
+    var humidityDiv = document.getElementById('humidity');
+    humidityDiv.innerHTML = '<p>Vochtigheid: </p>' + humidity + '%';
+    var pressureDiv = document.getElementById('pressure');
+    pressureDiv.innerHTML = '<p>Luchtdruk: </p>' + pressure + ' hPa';
+    var sunOrCloudsDiv = document.getElementById('sunOrClouds');
+    sunOrCloudsDiv.innerHTML = '<p>Vandaag: </p>' + sunOrClouds + icon;
 }
 
 document.getElementById('button').onclick = function(){
@@ -67,7 +75,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwb
 
 function getMapLocation(response) {
     var weatherLoc = response.location;
-    var weatherLocCity = document.getElementById('coord');
+    var weatherLocCity = document.getElementById('city');
     weatherLocCity.innerHTML = weatherLoc.name;
     
     var map = new mapboxgl.Map({

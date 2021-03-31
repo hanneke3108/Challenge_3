@@ -4,10 +4,11 @@ body {
     font-family: 'Rubik', sans-serif;
     font-weight: 300;
     background-color: black;
-    color: black;
+    color: white;
     margin-right: 5%;
     margin-left: 5%;
     overflow-x: hidden;
+    font-size: 40px;
 }
 
 header {
@@ -27,21 +28,25 @@ header {
     grid-template-columns: 1fr;
     grid-template-areas: 
         "input"
-        "coord"
-        "map"
-        "weather";
+        "city"
+        "temperature"
+        "feelsLike"
+        "humidity"
+        "pressure"
+        "sunOrClouds"
+        "map";
 }
 
 .bg {
-    background-color: yellow;
+    background-color: #333333;
 }
 
 #input {
     grid-area: input;
 }
 
-#coord {
-    grid-area: coord;
+#city {
+    grid-area: city;
 }
 
 #map {
@@ -50,13 +55,74 @@ header {
     height: 45vh;
 }
 
-#weather {
-    grid-area: weather;
+#temperature {
+    grid-area: temperature;
 }
 
+#feelsLike {
+    grid-area: feelsLike;
+}
+
+#humidity {
+    grid-area: humidity;
+}
+
+#pressure {
+    grid-area: pressure;
+}
+
+#sunOrClouds {
+    grid-area: sunOrClouds;
+}
+
+input[type=text] {
+    font-family: 'Rubik', sans-serif;
+    background-color: white;
+    border: 2px solid rgba(63, 215, 215, 1);
+    width: 250px;
+    height: 40px;
+    font-size: 15px;
+    padding-left: 10px;
+}
+
+/*WERKT NIET*/
 /*
+input[type=text]:active {
+    border: 1px solid red;
+}
+*/
+
+#button {
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    margin-top: 0px;
+    color: rgba(63, 215, 215, 1);
+    background-color: transparent;
+    border: 2px solid rgba(63, 215, 215, 1);
+    padding: 14px 50px 14px 50px;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 25px;
+    margin: 0;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+
 @media only screen and (min-width: 600px) and (max-width: 999px) {
- 
+    .container {
+        display: grid;
+        grid-gap: 15px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "input input"
+            "city sunOrClouds"
+            "temperature feelsLike"
+            "humidity pressure"
+            "map map";
+    }
 }
 
 @media only screen and (min-width: 1000px) and (max-width: 1350px){
@@ -65,4 +131,4 @@ header {
 
 @media only screen and (min-width: 1351px){
 
-}*/
+}
