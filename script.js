@@ -18,74 +18,32 @@ function getWeatherAPI(city, functie) {
     .then(function(response) {
         functie(response);	
     });
-	
-//	//Render location
-//	.then(function(response) {
-//		getMapLocation(response);	
-//	});
-
 }
 
 
 function getWeatherData(response) {
     var sunOrClouds = response.current.weather_descriptions[0];
-    var feelsDegrees = response.current.feelslike;
-    var degrees = response.current.temperature;
+    var feelsLike = response.current.feelslike;
+    var temperature = response.current.temperature;
+    var humidity = response.current.humidity;
+    var pressure = response.current.pressure;
     
     var weatherDiv = document.getElementById('weather');
-    weatherDiv.innerHTML = 'Huidige temperatuur: ' + degrees + '<br />' + 'Voelt aan als: ' + feelsDegrees + '<br />' + sunOrClouds;  
+    weatherDiv.innerHTML = 'Huidige temperatuur: ' + temperature + '&#176;C <br />' + 'Voelt aan als: ' + feelsLike + '&#176;C <br />' + 'Vochtigheid: ' + humidity + '% <br />' + 'Luchtdruk: ' + pressure + ' hPa <br />' + 'Vandaag: ' + sunOrClouds + "<img src='https://assets.weatherstack.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png'>";  
 }
-
 
 document.getElementById('button').onclick = function(){
     getCity();
 }
 
-
 function getCity() {
-    var y = document.getElementById("myText").value;
-    getWeatherAPI(y, getWeatherData);
-    getWeatherAPI(y, getMapLocation);
+    var textValue = document.getElementById("myText").value;
+    getWeatherAPI(textValue, getWeatherData);
+    getWeatherAPI(textValue, getMapLocation);
 }
 
 getWeatherAPI(city, getWeatherData);
 getWeatherAPI(city, getMapLocation);
-
-
-
-////API OPENWEATHERMAPS
-//function getWeatherAPI() {
-//
-//	var city = 'the%20Hague,nl';
-//    var openWeatherMaps = 'https://api.openweathermap.org/data/2.5/weather?appid=4b744423cf0a52b6dd15ef35e7a2cad9&q=' + city;
-//	
-//	fetch(openWeatherMaps)
-//	
-//	//Parse to JSON format
-//	.then(function(response) {
-//		return response.json();
-//	})
-//	
-//	//Render weather
-//	.then(function(response) {
-//		getWeatherData(response);	
-//	});
-//}
-
-
-//function getWeatherData(response) {
-//	// get type of weather in string format
-//	var sunOrClouds = response.weather[0].description;
-//
-//	// get temperature in Celcius
-//	var degreesInC = Math.floor(response.main.temp - 273.15);
-//
-//	// render weather in DOM
-//	var weatherDiv = document.getElementById('weather');
-//	weatherDiv.innerHTML = degreesInC + '&#176;C <br />' + sunOrClouds;
-//}
-//
-//getWeatherAPI();
 
 
 
@@ -104,7 +62,7 @@ function getMapLocation(response) {
         //[4.322840, 52.067101]
         //bearing: -45,
         pitch: 0,
-        zoom: 15,
+        zoom: 12,
     });
 
 map.addControl(new mapboxgl.NavigationControl()); 
