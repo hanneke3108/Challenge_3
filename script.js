@@ -1,7 +1,10 @@
+var city = 'Rotterdam';
+
 //API WEATHERSTACK
 function getWeatherAPI(city, getWeatherData) {
     
-    var city = 'Rotterdam';
+    var city = city;
+    var functie = functie;
     var weatherStack = 'http://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&query=' + city;
 
     fetch(weatherStack)
@@ -13,7 +16,7 @@ function getWeatherAPI(city, getWeatherData) {
 
     //Render weather
     .then(function(response) {
-        getWeatherData(response);	
+        functie(response);	
     });
 	
 //	//Render location
@@ -40,9 +43,9 @@ document.getElementById('button').onclick = function(){
 
 
 function getCity() {
-    var city = document.getElementById("myText").value;
-    getWeatherAPI(city, getWeatherData);
-    getWeatherAPI(city, getMapLocation);
+    var y = document.getElementById("myText").value;
+    getWeatherAPI(y, getWeatherData);
+    getWeatherAPI(y, getMapLocation);
 }
 
 //getWeatherAPI(city, getWeatherData);
@@ -102,11 +105,10 @@ function getMapLocation(response) {
         //bearing: -45,
         pitch: 0,
         zoom: 15,
-    })
-};
+    });
 
-//map.addControl(new mapboxgl.NavigationControl()); 
-
+map.addControl(new mapboxgl.NavigationControl()); 
+}
 
 
 //var HHSpopup = new mapboxgl.Popup().setHTML('<h3>De Haagse Hogeschool</h3><p>Is momenteel dicht.</p>');
