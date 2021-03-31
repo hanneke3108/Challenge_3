@@ -44,15 +44,15 @@ function getWeatherData(response) {
     }
     
     var temperatureDiv = document.getElementById('temperature');
-    temperatureDiv.innerHTML = '<p>Huidige temperatuur: </p>' + temperature + '&#176;C';
+    temperatureDiv.innerHTML = '<p>Current temperature: </p>' + temperature + '&#176;C';
     var feelsLikeDiv = document.getElementById('feelsLike');
-    feelsLikeDiv.innerHTML = '<p>Voelt aan als: </p>' + feelsLike + '&#176;C';
+    feelsLikeDiv.innerHTML = '<p>Feels like: </p>' + feelsLike + '&#176;C';
     var humidityDiv = document.getElementById('humidity');
-    humidityDiv.innerHTML = '<p>Vochtigheid: </p>' + humidity + '%';
+    humidityDiv.innerHTML = '<p>Humidity: </p>' + humidity + '%';
     var pressureDiv = document.getElementById('pressure');
-    pressureDiv.innerHTML = '<p>Luchtdruk: </p>' + pressure + ' hPa';
+    pressureDiv.innerHTML = '<p>Pressure: </p>' + pressure + ' hPa';
     var sunOrCloudsDiv = document.getElementById('sunOrClouds');
-    sunOrCloudsDiv.innerHTML = '<p>Vandaag: </p>' + sunOrClouds + icon;
+    sunOrCloudsDiv.innerHTML = '<p>Today: </p>' + sunOrClouds + icon;
 }
 
 document.getElementById('button').onclick = function(){

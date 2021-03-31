@@ -85,26 +85,32 @@ input[type=text] {
     padding-left: 10px;
 }
 
-/*WERKT NIET*/
-/*
-input[type=text]:active {
-    border: 1px solid red;
+input[type=text]:focus {
+    outline: none;
 }
-*/
 
 #button {
     font-family: 'Rubik', sans-serif;
-    font-size: 12px;
-    margin-top: 0px;
+    font-size: 15px;
     color: rgba(63, 215, 215, 1);
     background-color: transparent;
     border: 2px solid rgba(63, 215, 215, 1);
-    padding: 14px 50px 14px 50px;
+    padding: 12px 50px 12px 50px;
     text-transform: uppercase;
 }
 
+#button:focus {
+    outline: none;
+}
+
+#button:hover {
+    cursor: pointer;
+    color: white;
+    background-color: rgba(63, 215, 215, 1);
+}
+
 p {
-    font-size: 25px;
+    font-size: 18px;
     margin: 0;
     padding-left: auto;
     padding-right: auto;
