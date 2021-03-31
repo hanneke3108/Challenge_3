@@ -34,9 +34,14 @@ function getWeatherData(response) {
 }
 
 
+document.getElementById('button').onclick = function(){
+    getCity();
+}
+
+
 function getCity() {
-    var y = document.getElementById("myText").value;
-    setWeatherAPI(y);;
+    var city = document.getElementById("myText").value;
+    getWeatherAPI(city);
 }
 
 getWeatherAPI();

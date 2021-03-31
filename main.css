@@ -26,12 +26,17 @@ header {
     grid-gap: 15px;
     grid-template-columns: 1fr;
     grid-template-areas: 
+        "input"
         "map"
         "weather";
 }
 
 .bg {
     background-color: yellow;
+}
+
+#input {
+    grid-area: input;
 }
 
 #map {
