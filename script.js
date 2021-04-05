@@ -58,11 +58,17 @@ function getWeatherData(response) {
 document.getElementById('button').onclick = function(){
     getCity();
 }
+document.getElementById('button2').onclick = function(){
+    getCity();
+}
 
 function getCity() {
-    var textValue = document.getElementById("myText").value;
+    var textValue = document.getElementById('myText').value;
     getWeatherAPI(textValue, getWeatherData);
     getWeatherAPI(textValue, getMapLocation);
+    var textValue2 = document.getElementById('myText2').value;
+    getWeatherAPI(textValue2, getWeatherData);
+    getWeatherAPI(textValue2, getMapLocation);
 }
 
 getWeatherAPI(city, getWeatherData);

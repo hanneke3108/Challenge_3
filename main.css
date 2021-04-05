@@ -15,6 +15,10 @@ header {
     height: 100px;
 }
 
+figure img {
+    width: 250px;
+}
+
 .logo {
     width: 250px;
     position: relative;
@@ -37,6 +41,12 @@ header {
 
 .bg {
     background-color: #333333;
+}
+
+#input2 {
+    float: right;
+    margin-top: -75px;
+    visibility: hidden;
 }
 
 #input {
@@ -92,7 +102,7 @@ header {
     width: 300px;
 }
 
-input[type=text] {
+input[type=text], input2[type=text] {
     font-family: 'Rubik', sans-serif;
     background-color: white;
     border: 2px solid rgba(63, 215, 215, 1);
@@ -103,11 +113,11 @@ input[type=text] {
     margin-bottom: 10px;
 }
 
-input[type=text]:focus {
+input[type=text]:focus, input2[type=text]:focus {
     outline: none;
 }
 
-#button {
+#button, #button2 {
     font-family: 'Rubik', sans-serif;
     font-size: 15px;
     color: rgba(63, 215, 215, 1);
@@ -117,11 +127,11 @@ input[type=text]:focus {
     text-transform: uppercase;
 }
 
-#button:focus {
+#button:focus, #button2:focus {
     outline: none;
 }
 
-#button:hover {
+#button:hover, #button2:hover {
     cursor: pointer;
     color: white;
     background-color: rgba(63, 215, 215, 1);
@@ -167,6 +177,15 @@ p {
         width: 100%;
         height: 80vh;
     }
+    
+    /*GROTE GRID OPEN*/
+    #input {
+        visibility: hidden;
+    }
+    
+    #input2 {
+        visibility: visible;
+    }
 }
 
 @media only screen and (min-width: 1351px){
@@ -187,5 +206,13 @@ p {
     #map {
         width: 100%;
         height: 80vh;
+    }
+    
+    #input {
+        visibility: hidden;
+    }
+    
+    #input2 {
+        visibility: visible;
     }
 }
