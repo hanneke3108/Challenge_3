@@ -142,7 +142,6 @@ p {
     margin: 0;
 }
 
-
 @media only screen and (min-width: 600px) and (max-width: 999px) {
     .container {
         display: grid;
@@ -203,6 +202,7 @@ p {
             "pressure sunOrClouds";
     }
     
+    /*BUITEN INSPECT TOONT HIJ DE MAP HEEL HOOG*/
     #map {
         width: 100%;
         height: 80vh;
