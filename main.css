@@ -8,7 +8,7 @@ body {
     margin-right: 5%;
     margin-left: 5%;
     overflow-x: hidden;
-    font-size: 40px;
+    font-size: 30px;
 }
 
 header {
@@ -24,17 +24,15 @@ header {
 
 .container {
     display: grid;
-    grid-gap: 15px;
-    grid-template-columns: 1fr;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas: 
-        "input"
-        "city"
-        "temperature"
-        "feelsLike"
-        "humidity"
-        "pressure"
-        "sunOrClouds"
-        "map";
+        "input input"
+        "city city"
+        "sunOrClouds sunOrClouds"
+        "temperature feelsLike"
+        "humidity pressure"
+        "map map";
 }
 
 .bg {
@@ -43,16 +41,28 @@ header {
 
 #input {
     grid-area: input;
+    margin-bottom: 50px;
 }
 
 #city {
     grid-area: city;
+    font-size: 20px;
+    font-weight: 400;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #map {
     grid-area: map;
     width: 90vw;
     height: 45vh;
+}
+
+#temperature, #feelsLike, #humidity, #pressure, #sunOrClouds {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 #temperature {
@@ -73,6 +83,13 @@ header {
 
 #sunOrClouds {
     grid-area: sunOrClouds;
+    font-size: 15px;
+    text-align: center;
+}
+
+/*BLIJFT NIET CENTER*/
+#sunOrClouds img {
+    width: 300px;
 }
 
 input[type=text] {
@@ -83,6 +100,7 @@ input[type=text] {
     height: 40px;
     font-size: 15px;
     padding-left: 10px;
+    margin-bottom: 10px;
 }
 
 input[type=text]:focus {
@@ -110,10 +128,8 @@ input[type=text]:focus {
 }
 
 p {
-    font-size: 18px;
+    font-size: 15px;
     margin: 0;
-    padding-left: auto;
-    padding-right: auto;
 }
 
 
