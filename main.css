@@ -37,6 +37,7 @@ figure img {
         "temperature feelsLike"
         "humidity pressure"
         "map map";
+    width: 100%;
 }
 
 .bg {
@@ -73,6 +74,7 @@ figure img {
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    color: rgba(63, 215, 215, 1);
 }
 
 #temperature {
@@ -97,9 +99,10 @@ figure img {
     text-align: center;
 }
 
-/*BLIJFT NIET CENTER*/
 #sunOrClouds img {
     width: 300px;
+    display: block;
+    margin: 0px auto;
 }
 
 input[type=text], input2[type=text] {
@@ -138,6 +141,7 @@ input[type=text]:focus, input2[type=text]:focus {
 }
 
 p {
+    color: white;
     font-size: 15px;
     margin: 0;
 }
@@ -177,9 +181,10 @@ p {
         height: 80vh;
     }
     
-    /*GROTE GRID OPEN*/
     #input {
         visibility: hidden;
+        overflow: hidden;
+        height: 0px;
     }
     
     #input2 {

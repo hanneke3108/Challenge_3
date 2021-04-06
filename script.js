@@ -23,6 +23,7 @@ function getWeatherAPI(city, functie) {
 
 function getWeatherData(response) {
     var sunOrClouds = response.current.weather_descriptions[0];
+    var weatherCode = response.current.weather_code;
     var feelsLike = response.current.feelslike;
     var temperature = response.current.temperature;
     var humidity = response.current.humidity;
@@ -35,7 +36,7 @@ function getWeatherData(response) {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>";
     } else if (sunOrClouds == 'Overcast' || sunOrClouds == 'Mist') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>";
-    } else if (sunOrClouds == 'Light Rain' || sunOrClouds == 'Light           Drizzle') {
+    } else if (sunOrClouds == 'Light Rain' || sunOrClouds == 'Light Drizzle') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>";
     } else if (sunOrClouds == 'Heavy rain at times' || sunOrClouds == 'Heavy rain') {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>"
@@ -102,8 +103,7 @@ function getMapLocation(response) {
     map.addControl( geocoder);
 
     map.on('load', function () {
-        // Listen for the `geocoder.input` event that is triggered when a user
-        // makes a selection
+        // Listen for the `geocoder.input` event that is triggered when a use makes a selection
         geocoder.on('result', function (ev) {
         // console.log(ev.result.center);
         });
