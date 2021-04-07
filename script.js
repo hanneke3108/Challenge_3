@@ -1,5 +1,6 @@
 var city = 'Rotterdam';
 
+
 //API WEATHERSTACK
 function getWeatherAPI(city, functie) {
     
@@ -20,7 +21,6 @@ function getWeatherAPI(city, functie) {
     });
 }
 
-
 function getWeatherData(response) {
     var sunOrClouds = response.current.weather_descriptions[0];
     var weatherCode = response.current.weather_code;
@@ -31,17 +31,17 @@ function getWeatherData(response) {
     var icon = "";
     
     if (weatherCode == 113) {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>"; //Clear/Sun
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>"; //Clear & Sunny
     } else if (weatherCode == 116) {
         var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>"; //Partly Cloudy
     } else if (weatherCode == 119, 122, 143, 248, 260) {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>"; //Cloudy/Overcast/Mist/Fog/Freezing Fog
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>"; //Cloudy & Overcast & Mist & Fog &Freezing Fog
     } else if (weatherCode == 176, 185, 263, 266, 281, 293, 296, 299, 302, 311, 314, 353, 356) {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>"; //Patchy/Light/Moderate rain/Freezing drizzle/OR HEAVY
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>"; //Patchy/Light/Moderate rain & Freezing drizzle
     } else if (weatherCode == 284, 305, 308, 359) {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>" //Torrential/Heavy rain/Freezing drizzle
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>" //Torrential/Heavy rain & Freezing drizzle
     } else if (weatherCode == 386, 389) {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>" //Patchy light rain in area with thunder/Moderate or heavy rain in area with thunder
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>" //Light or Heavy rain with thunder
     }
     
     var temperatureDiv = document.getElementById('temperature');
@@ -58,7 +58,7 @@ function getWeatherData(response) {
 
 document.getElementById('button').onclick = function(){
     getCity();
-}
+} 
 document.getElementById('button2').onclick = function(){
     getCity();
 }
@@ -74,7 +74,6 @@ function getCity() {
 
 getWeatherAPI(city, getWeatherData);
 getWeatherAPI(city, getMapLocation);
-
 
 
 //API MAPBOX
