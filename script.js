@@ -6,7 +6,7 @@ function getWeatherAPI(city, functie) {
     
     var city = city;
     var functie = functie;
-    var weatherStack = 'https://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&query=' + city;
+    var weatherStack = 'http://api.weatherstack.com/current?access_key=c0e0f85c5546e1d9bfb619a4a91d9a59&query=' + city;
 
     fetch(weatherStack)
 
