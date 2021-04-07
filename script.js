@@ -92,29 +92,6 @@ function getMapLocation(response) {
         pitch: 0,
         zoom: 12,
     });
-    
-    var geocoder = new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken,
-        mapboxgl: mapboxgl
-    });
-
-    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
-    
-//    //HOE PAS IK GEOCODER TOE MET EIGEN INPUT
-//    var geocoder = new MapboxGeocoder({
-//        accessToken: mapboxgl.accessToken,
-//        mapboxgl: mapboxgl
-//    });
-//
-//    // Voeg de zoekbalk toe
-//    map.addControl( geocoder);
-//
-//    map.on('load', function () {
-//        // Listen for the `geocoder.input` event that is triggered when a use makes a selection
-//        geocoder.on('result', function (ev) {
-//        // console.log(ev.result.center);
-//        });
-//    });
 
     map.addControl(new mapboxgl.NavigationControl()); 
 }
