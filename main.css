@@ -38,6 +38,7 @@ figure img {
         "humidity pressure"
         "map map";
     width: 100%;
+    margin-bottom: 50px;
 }
 
 .bg {
@@ -53,6 +54,7 @@ figure img {
 #input {
     grid-area: input;
     margin-bottom: 50px;
+    background-color: black;
 }
 
 #city {
@@ -100,7 +102,7 @@ figure img {
 }
 
 #sunOrClouds img {
-    width: 300px;
+    width: 200px;
     display: block;
     margin: 0px auto;
 }
@@ -174,11 +176,12 @@ p {
             "humidity sunOrClouds"
             "pressure sunOrClouds"
             "map map";
+        margin-bottom: 80px;
     }
     
     #map {
         width: 100%;
-        height: 80vh;
+        height: 500px;
     }
     
     #input {
@@ -189,6 +192,10 @@ p {
     
     #input2 {
         visibility: visible;
+    }
+    
+    #sunOrClouds img {
+        width: 300px;
     }
 }
 
@@ -205,12 +212,12 @@ p {
             "feelsLike sunOrClouds"
             "humidity sunOrClouds"
             "pressure sunOrClouds";
+        margin-bottom: 80px;
     }
     
-    /*BUITEN INSPECT TOONT HIJ DE MAP HEEL HOOG*/
     #map {
         width: 100%;
-        height: 80vh;
+        height: 500px;
     }
     
     #input {
@@ -219,5 +226,9 @@ p {
     
     #input2 {
         visibility: visible;
+    }
+    
+    #sunOrClouds img {
+        width: 300px;
     }
 }

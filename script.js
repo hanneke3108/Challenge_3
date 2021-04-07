@@ -30,18 +30,18 @@ function getWeatherData(response) {
     var pressure = response.current.pressure;
     var icon = "";
     
-    if (sunOrClouds == 'Sunny' || sunOrClouds == 'Clear') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>";
-    } else if (sunOrClouds == 'Partly cloudy') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>";
-    } else if (sunOrClouds == 'Overcast' || sunOrClouds == 'Mist') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>";
-    } else if (sunOrClouds == 'Light Rain' || sunOrClouds == 'Light Drizzle') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>";
-    } else if (sunOrClouds == 'Heavy rain at times' || sunOrClouds == 'Heavy rain') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>"
-    } else if (sunOrClouds == 'Thundery outbreaks possible') {
-        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>"
+    if (weatherCode == 113) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_sun.svg'>"; //Clear/Sun
+    } else if (weatherCode == 116) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_partly_cloudy.svg'>"; //Partly Cloudy
+    } else if (weatherCode == 119, 122, 143, 248, 260) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_full_clouds.svg'>"; //Cloudy/Overcast/Mist/Fog/Freezing Fog
+    } else if (weatherCode == 176, 185, 263, 266, 281, 293, 296, 299, 302, 311, 314, 353, 356) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_cloud_slight_rain.svg'>"; //Patchy/Light/Moderate rain/Freezing drizzle/OR HEAVY
+    } else if (weatherCode == 284, 305, 308, 359) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_rainy.svg'>" //Torrential/Heavy rain/Freezing drizzle
+    } else if (weatherCode == 386, 389) {
+        var icon = "<img src='https://weatherstack.com/site_images/weather_icon_thunder.svg'>" //Patchy light rain in area with thunder/Moderate or heavy rain in area with thunder
     }
     
     var temperatureDiv = document.getElementById('temperature');
@@ -93,21 +93,28 @@ function getMapLocation(response) {
         zoom: 12,
     });
     
-    //HOE PAS IK GEOCODER TOE MET EIGEN INPUT
     var geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         mapboxgl: mapboxgl
     });
 
-    // Voeg de zoekbalk toe
-    map.addControl( geocoder);
-
-    map.on('load', function () {
-        // Listen for the `geocoder.input` event that is triggered when a use makes a selection
-        geocoder.on('result', function (ev) {
-        // console.log(ev.result.center);
-        });
-    });
+    document.getElementById('geocoder').appendChild(geocoder.onAdd(map));
+    
+//    //HOE PAS IK GEOCODER TOE MET EIGEN INPUT
+//    var geocoder = new MapboxGeocoder({
+//        accessToken: mapboxgl.accessToken,
+//        mapboxgl: mapboxgl
+//    });
+//
+//    // Voeg de zoekbalk toe
+//    map.addControl( geocoder);
+//
+//    map.on('load', function () {
+//        // Listen for the `geocoder.input` event that is triggered when a use makes a selection
+//        geocoder.on('result', function (ev) {
+//        // console.log(ev.result.center);
+//        });
+//    });
 
     map.addControl(new mapboxgl.NavigationControl()); 
 }
