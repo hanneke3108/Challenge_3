@@ -1,6 +1,26 @@
 var city = 'Rotterdam';
 
 
+//API MAPBOX
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwbHc1MmdwbHdoNSJ9.AijgnojlL0zQrsuxoIpURw';
+
+function getMapLocation(response) {
+    var weatherLoc = response.location;
+    var weatherLocCity = document.getElementById('city');
+    weatherLocCity.innerHTML = weatherLoc.name;
+    
+    var map = new mapboxgl.Map({
+        style: 'mapbox://styles/mapbox/satellite-v9',
+        container: 'map',
+        center: [weatherLoc.lon, weatherLoc.lat],
+        pitch: 0,
+        zoom: 12,
+    });
+
+    map.addControl(new mapboxgl.NavigationControl()); 
+}
+
+
 //API WEATHERSTACK
 function getWeatherAPI(city, functie) {
     
@@ -74,23 +94,3 @@ function getCity() {
 
 getWeatherAPI(city, getWeatherData);
 getWeatherAPI(city, getMapLocation);
-
-
-//API MAPBOX
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGFubmVrZTMxMDgiLCJhIjoiY2ttbHRsajV5MDlhNDJwbHc1MmdwbHdoNSJ9.AijgnojlL0zQrsuxoIpURw';
-
-function getMapLocation(response) {
-    var weatherLoc = response.location;
-    var weatherLocCity = document.getElementById('city');
-    weatherLocCity.innerHTML = weatherLoc.name;
-    
-    var map = new mapboxgl.Map({
-        style: 'mapbox://styles/mapbox/satellite-v9',
-        container: 'map',
-        center: [weatherLoc.lon, weatherLoc.lat],
-        pitch: 0,
-        zoom: 12,
-    });
-
-    map.addControl(new mapboxgl.NavigationControl()); 
-}
